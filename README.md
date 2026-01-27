@@ -16,6 +16,8 @@ $$R\beta=Q^Ty.$$
 
 We now can work with a simpler system, as $R$ is upper triangular.
 
+## Addressing The Problem
+
 The `R` code we will be building to solve our model will rest upon two major parts: a function which performs the QR factorization and another one that solves linear systems with upper-triangular matrices. In the following sections we will present the algorithm that will be implemented for each case.
 
 ### QR Decomposition
