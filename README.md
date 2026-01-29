@@ -72,13 +72,13 @@ We will use back substitution in order to solve this type of linear systems. For
 
 ## Example
 
-In the following example we will implement our resulting function, namely `OLSByQRDec`. `OLSByQRDec` will utilize the algorithms presented in the previous section to get the OLS coefficients for some artificial data we have previously generated. This dataset includes 200 observations for the following variables:
+In this example we will implement our resulting function, namely `OLSByQRDec`. `OLSByQRDec` will utilize the algorithms presented in the previous section to get the OLS coefficients for some artificial data we will have previously generated. This dataset includes 200 observations for the following variables:
 - Two independent $\sim N(3,3)$ explanatory variables $x_1$ and $x_2$
 - A dependent variable $y$ which follows the next data generating process:
 
- $$y_i=5+x_{1i}+x_{2i}+\epsilon_i,\ \epsilon_i\sim N(0,1)$$
+ $$y_i=5+2x_{1i}+0.5x_{2i}+\epsilon_i,\ \epsilon_i\sim N(0,1)$$
 
-`OLSByQRDec` uses as inputs the above-mentioned matrix `X` and vector `y`; hence, we need to build them. `X` will include three column vectors: $x_1$, $x_2$, and a vector of $1$s, since `y` has an intercept. After running this function introducing the required elements, we obtain a result that is close to the true data generating process (notice there is an error term, thus the differences):
+`OLSByQRDec` uses as inputs the matrix $X$ and vector $y$ mentioned in the first section; hence, we need to build them. $X$ will include three column vectors: $x_1$, $x_2$, and a vector of 1s, since $y$ has an intercept. After running this function by introducing the required elements, we obtain a result that is close to the true data generating process (notice there is an error term, thus the differences):
 
     > OLSByQRDec(X,y) 
     [1] 4.8403119 2.0175043 0.5006754
