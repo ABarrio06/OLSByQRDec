@@ -71,7 +71,7 @@ OLSByQRDec <- function(X,y){ # Inputs: nxp matrix X and n-length vector y
 library(tidyverse) # Load 'tidyverse' 
 
 #set.seed(45) # This randomization seed leads to the same
-              # output than in the README file
+              # output than the one observed in the README file
 
 data.frame(x_1 = rnorm(200,3,3), 
            x_2 = rnorm(200,3,3)) %>% 
