@@ -55,9 +55,35 @@ GramSchmidt <- function(A){ # Input: nxp matrix A
                                         # and the product of the last two
 }
 
-OLSByQRDec <- function(X,y){
+OLSByQRDec <- function(X,y){ # Inputs: nxp matrix X and n-length vector y
   R <- GramSchmidt(X)$R # Invoke R matrix for X using 'GramSchmidt' function
   Qtrans <- t(GramSchmidt(X)$Q) # Invoke Q matrix for X and transpose it
-  Qtransy <- Qtrans%*%y # Matrix-multiply transposed Q and y
+  Qtransy <- Qtrans%*%y # Matrix-multiply transposed-Q and y
   BackSolving(R,Qtransy) # Use back substitution to get the coefficient values
 }
+
+
+## Example ##
+
+#install.packages("tidyverse") # Install the 'tidyverse' package collection
+                               # in case you have not done so before
+
+library(tidyverse) # Load 'tidyverse' 
+
+data.frame(X_1 = rnorm(200,3,3), 
+           X_2 = rnorm(200,3,3)) %>% 
+  mutate(y = 5 + 2*X_1 + 0.5*X_2 + rnorm(length(X_1),0,1)) -> data 
+# Create a simulated dataset in which y is a linear combination of the 
+# randomly-selected independent variables plus a ~N(0,1) error term
+
+X <- matrix(c(rep(1,dim(data)[1]), data$X_1, data$X_2),
+            dim(data)[1],
+            dim(data)[2]) # Create a matrix in which each column vector 
+                          # corresponds with each of the explanatory variables
+                          # plus a vector of 1s (notice y has an intercept)
+
+y <- data$y # Vector containing the values for the dependent variable
+
+OLSByQRDec(X,y) # After applying 'OLSByQRDec' on both matrices,
+                # observe the result is almost identical to the
+                # data generating process
