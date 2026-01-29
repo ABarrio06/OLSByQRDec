@@ -70,13 +70,13 @@ OLSByQRDec <- function(X,y){ # Inputs: nxp matrix X and n-length vector y
 
 library(tidyverse) # Load 'tidyverse' 
 
-data.frame(X_1 = rnorm(200,3,3), 
-           X_2 = rnorm(200,3,3)) %>% 
-  mutate(y = 5 + 2*X_1 + 0.5*X_2 + rnorm(length(X_1),0,1)) -> data 
+data.frame(x_1 = rnorm(200,3,3), 
+           x_2 = rnorm(200,3,3)) %>% 
+  mutate(y = 5 + 2*x_1 + 0.5*x_2 + rnorm(length(x_1),0,1)) -> data 
 # Create a simulated dataset in which y is a linear combination of the 
 # randomly-selected independent variables plus a ~N(0,1) error term
 
-X <- matrix(c(rep(1,dim(data)[1]), data$X_1, data$X_2),
+X <- matrix(c(rep(1,dim(data)[1]), data$x_1, data$x_2),
             dim(data)[1],
             dim(data)[2]) # Create a matrix in which each column vector 
                           # corresponds with each of the explanatory variables
