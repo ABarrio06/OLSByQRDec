@@ -70,6 +70,9 @@ OLSByQRDec <- function(X,y){ # Inputs: nxp matrix X and n-length vector y
 
 library(tidyverse) # Load 'tidyverse' 
 
+#set.seed(45) # This randomization seed leads to the same
+              # output than in the README file
+
 data.frame(x_1 = rnorm(200,3,3), 
            x_2 = rnorm(200,3,3)) %>% 
   mutate(y = 5 + 2*x_1 + 0.5*x_2 + rnorm(length(x_1),0,1)) -> data 
