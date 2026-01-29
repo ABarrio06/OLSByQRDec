@@ -69,3 +69,13 @@ We will use back substitution in order to solve this type of linear systems. For
   5. Set $b=b_{1:(n-2)}-B_{[1:(n-2),n-1]}x_{n-1}$ and $B=B_{[1:(n-2),1:(n-2)]}$
   6. Set $x_{n-2}=b_{n-2}/B_{[n-2,n-2]}$
   7. Repeat this pattern until every empty space of $x$ has been filled
+
+## Example
+
+In the following example we will implement our resulting function, named `OLSByQRDec`, which utilizes the algorithms presented in the last section to get the OLS coefficients for some artificial data we have previously generated. These data includes the following variables:
+- Two independent $\sim N(3,3)$ explanatory variables $x_1$ and $x_2$
+- A dependent variable $y$ which follows the next data generating process:
+
+ $$y_i=5+x_{1i}+x_{2i}+\epsilon_i,\ \epsilon_i\sim N(0,1).$$
+
+ 
