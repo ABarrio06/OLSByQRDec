@@ -81,6 +81,6 @@ In this example we will implement our resulting function, namely `OLSByQRDec`. `
 `OLSByQRDec` uses as inputs the matrix $X$ and vector $y$ mentioned in the first section; hence, we need to build them. $X$ will include three column vectors: $x_1$, $x_2$, and a vector of 1s, since $y$ has an intercept. After running this function by introducing the required elements, we obtain a result that is close to the true data generating process (notice there is an error term, thus the differences):
 
     > OLSByQRDec(X,y) 
-    [1] 4.8403119 2.0175043 0.5006754
+    [1] 4.9300979 1.9938965 0.5128757
 
 The observed values are associated with the coefficients for the intercept, $x_1$, and $x_2$, respectively. This example can be found at the end of the `code.R` document, including the creation of the dataset.
