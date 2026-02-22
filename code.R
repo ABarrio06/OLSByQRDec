@@ -105,4 +105,5 @@ ggplot() +
                                   # to its mean for every x_1 since x_1 and x_2
                                   # are uncorrelated by construction
   theme_minimal() +
-  labs(title = "Actual Observations Versus Fitted Line")
+  labs(title = "Observed Values Versus Fitted Line") +
+  theme(plot.title = element_text(size = 10))
