@@ -83,4 +83,8 @@ In this example we will implement our resulting function, namely `OLSByQRDec`. `
     > OLSByQRDec(X,y) 
     [1] 4.9300979 1.9938965 0.5128757
 
-The observed values are associated with the coefficients for the intercept, $x_1$, and $x_2$, respectively. This example can be found at the end of the `code.R` document, including the creation of the dataset.
+The observed values are associated with the coefficients for the intercept, $x_1$, and $x_2$, respectively. 
+
+![Observed values versus fitted line](Plot.png)
+
+This example can be found at the end of the `code.R` document, including the creation of the dataset and plot.
