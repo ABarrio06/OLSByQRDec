@@ -34,12 +34,12 @@ GramSchmidt <- function(A){ # Input: nxp matrix A
   p <- dim(A)[2] # Number of columns of A
   Q <- matrix(NA, n, p) # Create NA matrix Q
   R <- matrix(0, p, p) # Create zero matrix R
-  for(k in 1:p){ # Loop covers every column of Q and R sequentially
+  for(k in 1:p){ # This loop covers every column of Q and R sequentially
     Q[,k] <- U[,k]/sqrt(sum((U[,k])^2)) # n-length vector for column k in Q
     R[k,k] <- sum(A[,k]*Q[,k]) # kth element of R's leading diagonal
     if(k<p){ # If the number of the column is different from p, the right-hand
              # side elements of the diagonal must be filled for R
-      for(i in (k+1):p){ # Loop over every element at the right-hand
+      for(i in (k+1):p){ # Loop over every element at the right hand
                          # of the diagonal
         R[k,i] <- sum(A[,i]*Q[,k])
       }
@@ -90,3 +90,19 @@ y <- data$y # Vector containing the values for the dependent variable
 OLSByQRDec(X,y) # After applying 'OLSByQRDec' on both matrices,
                 # observe the result is almost identical to the
                 # data generating process
+
+# Save the coefficient values to plot the estimated equation in the next step
+beta_0 <- OLSByQRDec(X,y)[1]
+beta_1 <- OLSByQRDec(X,y)[2]
+beta_2 <- OLSByQRDec(X,y)[3]
+
+ggplot() +
+  geom_point(data = data,
+             mapping = aes(y = y, x = x_1)) + # Scatter plot for the
+                                              # observed values
+  geom_function(fun = function(x_1) beta_0 + beta_1*x_1 + beta_2*mean(data$x_2),
+                color = 'blue') + # Estimated line. The value for x_2 is fixed
+                                  # to its mean for every x_1 since x_1 and x_2
+                                  # are uncorrelated by construction
+  theme_minimal() +
+  labs(title = "Actual Observations Versus Fitted Line")
